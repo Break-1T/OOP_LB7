@@ -30,26 +30,59 @@ namespace OOP_LB7_2
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            myMatrix = new MyMatrix(Convert.ToInt32(Rows.Text),Convert.ToInt32(Collums.Text));
+            if (IsIntNumber(Rows.Text)==true && IsIntNumber(Collums.Text)==true)
+            {
+                myMatrix = new MyMatrix(Convert.ToInt32(Rows.Text), Convert.ToInt32(Collums.Text));
 
-            //Вывод базовой матрицы
-            BaseSize.Text = $"Размерность матрицы {myMatrix.Rows} x {myMatrix.Collums}";
-            ShowBase.Text = myMatrix.GetBaseMatrix();
+                //Вывод базовой матрицы
+                BaseSize.Text = $"Размерность матрицы {myMatrix.Rows} x {myMatrix.Collums}";
+                ShowBase.Text = myMatrix.GetBaseMatrix();
 
-            //Создание произвольных матриц
-            MyMatrix matrix1 = myMatrix.GetDerMatrix1();
-            MyMatrix matrix2 = myMatrix.GetDerMatrix2();
-            MyMatrix matrix3 = myMatrix.GetDerMatrix3();
+                //Создание произвольных матриц
+                MyMatrix matrix1 = myMatrix.GetDerMatrix1();
+                MyMatrix matrix2 = myMatrix.GetDerMatrix2();
+                MyMatrix matrix3 = myMatrix.GetDerMatrix3();
 
-            //Вывод произвольных матриц
-            ShowDeriative1.Text = matrix1.GetBaseMatrix();
-            DeriativeSize1.Text = $"Размерность матрицы {matrix1.Rows} x {matrix1.Collums}";
+                //Вывод произвольных матриц
+                ShowDeriative1.Text = matrix1.GetBaseMatrix();
+                DeriativeSize1.Text = $"Размерность матрицы {matrix1.Rows} x {matrix1.Collums}";
 
-            ShowDeriative2.Text = matrix2.GetBaseMatrix();
-            DeriativeSize2.Text = $"Размерность матрицы {matrix2.Rows} x {matrix2.Collums}";
+                ShowDeriative2.Text = matrix2.GetBaseMatrix();
+                DeriativeSize2.Text = $"Размерность матрицы {matrix2.Rows} x {matrix2.Collums}";
 
-            ShowDeriative3.Text = matrix3.GetBaseMatrix();
-            DeriativeSize3.Text = $"Размерность матрицы {matrix3.Rows} x {matrix3.Collums}";
+                ShowDeriative3.Text = matrix3.GetBaseMatrix();
+                DeriativeSize3.Text = $"Размерность матрицы {matrix3.Rows} x {matrix3.Collums}";
+            }
+            else
+            {
+                MessageBox.Show("Входные данные сожержат недопустимые символы");
+            }
+        }
+
+        private bool IsIntNumber(string text)
+        {
+            bool result = true;
+
+            char[] symbolsChars = text.ToCharArray();
+
+            if (text == "")
+            {
+                result = false;
+            }
+            else
+            {
+
+                foreach (var i in symbolsChars)
+                {
+                    if (!Char.IsNumber(i))
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }
