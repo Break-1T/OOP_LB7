@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OOP_LB7_3.Classes;
 using OOP_LB7_3.Dialog_boxes;
+using OOP_LB7_3.Services;
 
 namespace OOP_LB7_3
 {
@@ -29,22 +30,37 @@ namespace OOP_LB7_3
         }
 
         public BindingList<Article> mArticles;
+        private FIleIOService mIoService;
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            mArticles = new BindingList<Article>();
+            mIoService = new FIleIOService("jsondata.json");
+            mArticles = mIoService.LoadData();
             dgStore.ItemsSource = mArticles;
         }
 
-        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        private void MenuItemAdd_OnClick(object sender, RoutedEventArgs e)
         {
             AddItemWindow addItem = new AddItemWindow(this);
+            addItem.Owner = this;
             addItem.Show();
         }
 
         private void MenuExit_OnClick(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void MainWindow_OnClosed(object sender, EventArgs e)
+        {
+            mIoService.SaveData(mArticles);
+        }
+
+        private void MenuItemFind_OnClick(object sender, RoutedEventArgs e)
+        {
+            FindItemWindow findItem = new FindItemWindow(this);
+            findItem.Owner = this;
+            findItem.Show();
         }
     }
 }

@@ -70,8 +70,8 @@ namespace OOP_LB7_3.Dialog_boxes
                 }
                 else
                 {
-                    main.mArticles.Add(new Article(ProductName.Text, Convert.ToDouble(ProductPrice.Text), Shop.Text,
-                        index));
+                    main.mArticles.Add(new Article(ProductName.Text, Convert.ToDouble(ProductPrice.Text).ToString("C",CultureInfo.CurrentCulture), Shop.Text,
+                        index.ToString()));
                     Close();
                 }
             }

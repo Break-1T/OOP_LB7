@@ -7,7 +7,7 @@ namespace OOP_LB7_3.Classes
 {
     public class Article
     {
-        public Article(string product, double price, string store,int index)
+        public Article(string product, string price, string store,string index)
         {
             this._price = price;
             this._product = product;
@@ -16,9 +16,10 @@ namespace OOP_LB7_3.Classes
         }
 
         private string _product;
-        private double _price;
+        private string _price;
         private string _store;
-        private int _index;
+        private string _index;
+
 
         public string Product
         {
@@ -27,7 +28,7 @@ namespace OOP_LB7_3.Classes
 
         public string Price
         {
-            get { return _price.ToString("C",CultureInfo.CurrentCulture); }
+            get { return _price; }
         }
 
         public string Store
@@ -35,7 +36,7 @@ namespace OOP_LB7_3.Classes
             get { return _store; }
         }
 
-        public int Index
+        public string Index
         {
             get { return _index; }
         }

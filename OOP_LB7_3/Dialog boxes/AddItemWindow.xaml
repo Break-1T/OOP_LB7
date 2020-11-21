@@ -27,9 +27,9 @@
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Введите наименование товара"  VerticalAlignment="Center" FontSize="13"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Введите цену товара"  VerticalAlignment="Center" FontSize="13"/>
 
-            <TextBox x:Name="Shop" Grid.Row="0" Grid.Column="1" Margin=" 10 15 10 15" FontSize="13"/>
-            <TextBox x:Name="ProductName" Grid.Row="1" Grid.Column="1" Margin=" 10 15 10 15" FontSize="13"/>
-            <TextBox x:Name="ProductPrice" Grid.Row="2" Grid.Column="1" Margin=" 10 15 10 15" FontSize="13"/>
+            <TextBox x:Name="Shop" Grid.Row="0" Grid.Column="1" Margin=" 10 15 10 15" FontSize="12"/>
+            <TextBox x:Name="ProductName" Grid.Row="1" Grid.Column="1" Margin=" 10 15 10 15" FontSize="12"/>
+            <TextBox x:Name="ProductPrice" Grid.Row="2" Grid.Column="1" Margin=" 10 15 10 15" FontSize="12"/>
 
         </Grid>
         <Button Grid.Row="2" Content="Добавить" Cursor="Hand" Click="ButtonBase_OnClick"/>
