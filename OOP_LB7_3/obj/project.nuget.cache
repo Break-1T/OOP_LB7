@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "9xXC9XdLUkp+D5nLiJbMZ1pu2eFmANYao04cbjUrFBWW1tO2usUSM5d1MBWYO1c5Vx7KKDuTy2uenbH7xM6nKQ==",
+  "success": true,
+  "projectFilePath": "D:\\C#\\OOP_LB7\\OOP_LB7\\OOP_LB7_3\\OOP_LB7_3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ТарасКрупко\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
