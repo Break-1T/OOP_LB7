@@ -32,19 +32,55 @@ namespace OOP_LB7_3.Dialog_boxes
         private void ButtonBaseFind_OnClick(object sender, RoutedEventArgs e)
         {
             string resultMessage = "";
+            
+            //Проверка суммы товара, для конфертации в гривну
+            char[] symbols = ProductPrice.Text.ToCharArray();
+            bool isdouble = true;
+            int symbolcount = 0;
+            foreach (var i in symbols)
+            {
+                if (i == ',')
+                {
+                    symbolcount++;
+                    continue;
+                }
+
+                if (i == '.')
+                {
+                    isdouble = false;
+                    break;
+                }
+                if (Char.IsSymbol(i) || Char.IsLetter(i))
+                {
+                    isdouble = false;
+                    break;
+                }
+            }
+
+            if (symbolcount > 1)
+                isdouble = false;
+            if (ProductPrice.Text == "")
+                isdouble = false;
+
+            if (isdouble == true)
+            {
+                ProductPrice.Text = Convert.ToDouble(ProductPrice.Text).ToString("C",CultureInfo.CurrentCulture);
+            }
 
             //Список списков типа Article
-            List<IEnumerable<Article>> myList = new List<IEnumerable<Article>>();
+            var myList = new List<IEnumerable<Article>>();
 
             //Список для вывода
             IEnumerable<Article> resultList = new List<Article>();
             
             //Заполнение списков, у которых есть совпадения с заданными параметрами поиска
-            var indexResult = from t in main.mArticles
+            var indexResult =from t in main.mArticles
                 where t.Index == ProductIndex.Text
                 select t;
-            if(indexResult.Any())
+            if (indexResult.Any())
+            {
                 myList.Add(indexResult);
+            }
 
             var shopResult = from t in main.mArticles
                 where t.Store == ProductShop.Text
@@ -62,7 +98,7 @@ namespace OOP_LB7_3.Dialog_boxes
                 where t.Price == ProductPrice.Text
                 select t;
             if(priceResult.Any())
-                myList.Add(productResult);
+                myList.Add(priceResult);
 
             //Проверка на то, сколько было введено параметров поиска
             string[] input = { ProductPrice.Text,ProductName.Text,ProductIndex.Text,ProductShop.Text};
